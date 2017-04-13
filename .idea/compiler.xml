@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ShipValueEstimationClient" />
         <module name="springMybatisTest1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ShipValueEstimationClient" target="1.6" />
       <module name="springMybatisTest1" target="1.6" />
     </bytecodeTargetLevel>
   </component>

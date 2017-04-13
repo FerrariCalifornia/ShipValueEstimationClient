@@ -15,6 +15,22 @@
         </sourceRoots>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/spring-mvc.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-mybatis.xml</file>
+          <file>jar://$MAVEN_REPOSITORY$/org/apache/cxf/cxf-core/3.1.6/cxf-core-3.1.6.jar!/META-INF/cxf/cxf.xml</file>
+          <file>file://$MAVEN_REPOSITORY$/org/apache/cxf/cxf-core/3.1.6/cxf-core-3.1.6.jar</file>
+          <file>jar://$MAVEN_REPOSITORY$/org/apache/cxf/cxf-rt-databinding-jaxb/3.1.6/cxf-rt-databinding-jaxb-3.1.6.jar!/META-INF/cxf/java2wsbeans.xml</file>
+          <file>file://$MAVEN_REPOSITORY$/org/apache/cxf/cxf-rt-databinding-jaxb/3.1.6/cxf-rt-databinding-jaxb-3.1.6.jar</file>
+          <file>jar://$MAVEN_REPOSITORY$/org/apache/cxf/cxf-rt-frontend-jaxws/3.1.6/cxf-rt-frontend-jaxws-3.1.6.jar!/META-INF/cxf/cxf-extension-jaxws.xml</file>
+          <file>file://$MAVEN_REPOSITORY$/org/apache/cxf/cxf-rt-frontend-jaxws/3.1.6/cxf-rt-frontend-jaxws-3.1.6.jar</file>
+          <file>jar://$MAVEN_REPOSITORY$/org/apache/cxf/cxf-rt-transports-http/3.1.6/cxf-rt-transports-http-3.1.6.jar!/META-INF/cxf/cxf-servlet.xml</file>
+          <file>file://$MAVEN_REPOSITORY$/org/apache/cxf/cxf-rt-transports-http/3.1.6/cxf-rt-transports-http-3.1.6.jar</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -78,6 +94,7 @@
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.0" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" level="project" />
+    <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:3.1" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:servlet-api:3.0-alpha-1" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
