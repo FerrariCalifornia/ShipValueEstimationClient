@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b270f0f-3c40-431d-bde3-ea3a13b39d1b" name="Default" comment="增加定时上传功能，增加日志，增加根据配置文件读取上传信息等功能">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/cc/controller/DownloadController.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cc/controller/FileController.java" afterPath="$PROJECT_DIR$/src/main/java/com/cc/controller/FileController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cc/controller/ShipController.java" afterPath="$PROJECT_DIR$/src/main/java/com/cc/controller/ShipController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cc/controller/Test.java" afterPath="$PROJECT_DIR$/src/main/java/com/cc/controller/Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -883,12 +877,20 @@
       <workItem from="1491533537361" duration="2243000" />
       <workItem from="1491916550313" duration="4979000" />
       <workItem from="1492045189711" duration="42000" />
-      <workItem from="1492566389873" duration="8527000" />
+      <workItem from="1492566389873" duration="8639000" />
     </task>
+    <task id="LOCAL-00001" summary="增加定时上传功能，增加日志，增加根据配置文件读取上传信息等功能">
+      <created>1492593738262</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1492593738262</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34502000" />
+    <option name="totallyTimeSpent" value="34614000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
