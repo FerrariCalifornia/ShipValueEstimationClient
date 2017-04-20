@@ -8,4 +8,5 @@ import java.io.File;
 public interface FileService {
 
     void uploadFile(File file, String url, String info);
+    void updateDataTrain();
 }

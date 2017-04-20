@@ -1,14 +1,6 @@
 package com.cc.timeTask;
 
-import com.cc.controller.Test;
 import com.cc.service.FileService;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.multipart.FilePart;
-import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
-import org.apache.commons.httpclient.methods.multipart.Part;
-import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -27,8 +19,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
     private FileService fileService;
 
 
-    @Scheduled(cron="0/9 * * * * ?")
-//    @Scheduled(cron="0 2 0 1 * ? ") //每月一号凌晨两点执行
+//    @Scheduled(cron="0/9 * * * * ?")
+    @Scheduled(cron="0 2 0 1 * ? ") //每月一号凌晨两点执行
     @Override
     public void upload_model() {
         System.out.println("start time task");
@@ -50,5 +42,12 @@ public class MyTimeTaskImpl implements MyTimeTask{
         fileService.uploadFile(file,upload_url,info);
         System.out.println("upload success");
 
+    }
+
+
+    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨两点执行
+    @Override
+    public void updateDataTrain() {
+        fileService.updateDataTrain();
     }
 }

@@ -5,5 +5,6 @@ package com.cc.timeTask;
  */
 public interface MyTimeTask {
     void upload_model();
+    void updateDataTrain();
 
 }
