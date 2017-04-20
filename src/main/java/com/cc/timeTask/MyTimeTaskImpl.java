@@ -20,9 +20,9 @@ public class MyTimeTaskImpl implements MyTimeTask{
 
 
 //    @Scheduled(cron="0/9 * * * * ?")
-    @Scheduled(cron="0 2 0 1 * ? ") //每月一号凌晨两点执行
+    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
     @Override
-    public void upload_model() {
+    public void upload_model20() {
         System.out.println("start time task");
         String filepath=null;
         String upload_url = null;
@@ -30,8 +30,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
         Properties prop = new Properties();
         try {
             prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
-            filepath=prop.getProperty("filepath");
-            upload_url=prop.getProperty("upload_url");
+            filepath=prop.getProperty("filepath20");
+            upload_url=prop.getProperty("upload_url20");
             info=prop.getProperty("info");
         } catch(IOException e) {
             e.printStackTrace();
@@ -44,10 +44,95 @@ public class MyTimeTaskImpl implements MyTimeTask{
 
     }
 
+    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
+    @Override
+    public void upload_model90() {
+        System.out.println("start time task");
+        String filepath=null;
+        String upload_url = null;
+        String info = null;
+        Properties prop = new Properties();
+        try {
+            prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
+            filepath=prop.getProperty("filepath90");
+            upload_url=prop.getProperty("upload_url90");
+            info=prop.getProperty("info");
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        File file = new File(filepath);
+        System.out.println(filepath);
 
-    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨两点执行
+        fileService.uploadFile(file,upload_url,info);
+        System.out.println("upload success");
+    }
+
+
+    @Scheduled(cron="0 2 0 1 * ? ") //每月一号凌晨2点执行
     @Override
     public void updateDataTrain() {
-        fileService.updateDataTrain();
+        fileService.updateDataTrain20();
+        fileService.updateDataTrain90();
+    }
+
+
+    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
+    @Override
+    public void train20() {
+
+        String filepath20=null;
+        Properties prop = new Properties();
+        try {
+            prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
+            filepath20=prop.getProperty("train_path20");
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+
+        Process proc = null;
+        try {
+            proc = Runtime.getRuntime().exec("Rscript "+filepath20);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            proc.waitFor();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
+    @Override
+    public void train90() {
+
+
+        String filepath90=null;
+
+
+        Properties prop = new Properties();
+        try {
+            prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
+            filepath90=prop.getProperty("train_path90");
+
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        Process proc = null;
+        try {
+            proc = Runtime.getRuntime().exec("Rscript "+filepath90);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            proc.waitFor();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
