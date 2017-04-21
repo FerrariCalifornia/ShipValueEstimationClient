@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -20,7 +23,9 @@ public class MyTimeTaskImpl implements MyTimeTask{
 
 
 //    @Scheduled(cron="0/9 * * * * ?")
-    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
+//    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
+
+    @Scheduled(cron="0 0/5 * * * ? ")
     @Override
     public void upload_model20() {
         System.out.println("start time task");
@@ -36,7 +41,10 @@ public class MyTimeTaskImpl implements MyTimeTask{
         } catch(IOException e) {
             e.printStackTrace();
         }
-        File file = new File(filepath);
+        Date date = new Date();
+        DateFormat format  = new SimpleDateFormat("yyyyMMdd");
+        String modeldate = format.format(date);
+        File file = new File(filepath+"train_"+modeldate+".RData");
         System.out.println(filepath);
 
         fileService.uploadFile(file,upload_url,info);
@@ -44,7 +52,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
 
     }
 
-    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
+//    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
+    @Scheduled(cron="0 0/5 * * * ? ")
     @Override
     public void upload_model90() {
         System.out.println("start time task");
@@ -60,7 +69,10 @@ public class MyTimeTaskImpl implements MyTimeTask{
         } catch(IOException e) {
             e.printStackTrace();
         }
-        File file = new File(filepath);
+        Date date = new Date();
+        DateFormat format  = new SimpleDateFormat("yyyyMMdd");
+        String modeldate = format.format(date);
+        File file = new File(filepath+"train_"+modeldate+".RData");
         System.out.println(filepath);
 
         fileService.uploadFile(file,upload_url,info);
@@ -68,7 +80,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
     }
 
 
-    @Scheduled(cron="0 2 0 1 * ? ") //每月一号凌晨2点执行
+//    @Scheduled(cron="0 2 0 1 * ? ") //每月一号凌晨2点执行
+    @Scheduled(cron="0 0/3 * * * ? ")
     @Override
     public void updateDataTrain() {
         fileService.updateDataTrain20();
@@ -76,7 +89,9 @@ public class MyTimeTaskImpl implements MyTimeTask{
     }
 
 
-    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
+//    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
+    @Scheduled(cron="0 0/4 * * * ? ")
+
     @Override
     public void train20() {
 
@@ -105,7 +120,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
         }
     }
 
-    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
+//    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
+    @Scheduled(cron="0 0/4 * * * ? ")
     @Override
     public void train90() {
 
