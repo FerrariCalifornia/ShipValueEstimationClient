@@ -54,6 +54,7 @@ public class FileController {
             }
             file.transferTo(new File(pathname+ File.separator + filename));
             System.err.println("filepath:"+pathname);
+            log.info("get"+filename +"success");
             return "success";
         }else {
             return "error";
@@ -84,6 +85,86 @@ public class FileController {
                 filepath.getParentFile().mkdir();
             }
 
+            String pathname = null;
+            Properties prop = new Properties();
+            try {
+                prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
+                pathname=prop.getProperty("savepath90");
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            File modelFile = new File(pathname+ File.separator + filename);
+            file.transferTo(modelFile);
+            System.err.println("filepath:"+pathname);
+
+            log.info("get"+filename +"success");
+            return "success";
+        }else {
+            return "error";
+        }
+    }
+    @RequestMapping(value = "/uploadTrainR20",method = RequestMethod.POST)
+    @ResponseBody
+    public String uploadTrainR(HttpServletRequest request,
+                           @RequestParam("info") String info,
+                           @RequestParam("file") MultipartFile file)throws Exception{
+
+        if (!info.equals("heqi")){
+            return "error";
+        }
+        log.info("start upload");
+        if (!file.isEmpty()) {
+            System.out.println("start upload.......");
+            String path = request.getServletContext().getRealPath("/upload/");
+            String filename = file.getOriginalFilename();
+            System.out.println("filename:......."+filename);
+            File filepath = new File(path, filename);
+            System.out.println("filepath:"+filepath);
+
+            if (!filepath.getParentFile().exists()) {
+                filepath.getParentFile().mkdir();
+            }
+
+            String pathname = null;
+            Properties prop = new Properties();
+            try {
+                prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
+                pathname=prop.getProperty("savepath20");
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            File modelFile = new File(pathname+ File.separator + filename);
+            file.transferTo(modelFile);
+
+            System.err.println("filepath:"+pathname);
+
+            log.info("get"+filename +"success");
+            return "success";
+        }else {
+            return "error";
+        }
+    }
+    @RequestMapping(value = "/uploadTrainR90",method = RequestMethod.POST)
+    @ResponseBody
+    public String uploadTrainR2(HttpServletRequest request,
+                               @RequestParam("info") String info,
+                               @RequestParam("file") MultipartFile file)throws Exception{
+
+        if (!info.equals("heqi")){
+            return "error";
+        }
+        log.info("start upload");
+        if (!file.isEmpty()) {
+            System.out.println("start upload.......");
+            String path = request.getServletContext().getRealPath("/upload/");
+            String filename = file.getOriginalFilename();
+            System.out.println("filename:......."+filename);
+            File filepath = new File(path, filename);
+            System.out.println("filepath:"+filepath);
+
+            if (!filepath.getParentFile().exists()) {
+                filepath.getParentFile().mkdir();
+            }
 
             String pathname = null;
             Properties prop = new Properties();
@@ -93,11 +174,16 @@ public class FileController {
             } catch(IOException e) {
                 e.printStackTrace();
             }
-            file.transferTo(new File(pathname+ File.separator + filename));
+            File modelFile = new File(pathname+ File.separator + filename);
+            file.transferTo(modelFile);
+
             System.err.println("filepath:"+pathname);
+
+            log.info("get"+filename +"success");
             return "success";
         }else {
             return "error";
         }
     }
+
 }

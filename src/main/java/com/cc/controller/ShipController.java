@@ -1,6 +1,7 @@
 package com.cc.controller;
 
 import com.cc.pojo.PostData;
+import com.cc.timeTask.MyTimeTaskImpl;
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -9,15 +10,17 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
+
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Properties;
 
 /**
  * Created by cc on 2017/4/6.
@@ -39,7 +42,15 @@ public class ShipController {
         String json = gson.toJson(postData);
 
         System.out.println(json);
-        String url = "http://119.29.144.179:9083/ShipValueEstimation/ship90";
+        String url =null;
+
+        Properties prop = new Properties();
+        try {
+            prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
+            url=prop.getProperty("url90");
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
         String respContent=null;
         CloseableHttpClient client = HttpClients.createDefault();
 
@@ -72,7 +83,14 @@ public class ShipController {
         String json = gson.toJson(postData);
 
         System.out.println(json);
-        String url = "http://119.29.144.179:9083/ShipValueEstimation/ship20";
+        String url =null;
+        Properties prop = new Properties();
+        try {
+            prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
+            url=prop.getProperty("url20");
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
         String respContent=null;
         CloseableHttpClient client = HttpClients.createDefault();
 
@@ -87,7 +105,6 @@ public class ShipController {
         if (resp.getStatusLine().getStatusCode() == 200) {
             HttpEntity he = resp.getEntity();
             respContent = EntityUtils.toString(he, "UTF-8");
-
         }
         pw.print(respContent);
         pw.close();

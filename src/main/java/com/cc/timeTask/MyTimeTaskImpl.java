@@ -48,6 +48,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
         System.out.println(filepath);
 
         fileService.uploadFile(file,upload_url,info);
+        File tranRFile= new File(filepath+"train.R");
+        tranRFile.delete();
         System.out.println("upload success");
 
     }
@@ -76,6 +78,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
         System.out.println(filepath);
 
         fileService.uploadFile(file,upload_url,info);
+        File tranRFile= new File(filepath+"train.R");
+        tranRFile.delete();
         System.out.println("upload success");
     }
 

@@ -47,6 +47,7 @@ public class FileServiceImlp implements FileService {
             client.getHttpConnectionManager().getParams().setConnectionTimeout(50000);// 设置连接时间
             int status = client.executeMethod(postMethod);
             if (status == HttpStatus.SC_OK) {
+                file.delete();
                 System.out.println(postMethod.getResponseBodyAsString());
             } else {
                 System.out.println("fail");
