@@ -1,6 +1,7 @@
 package com.cc.timeTask;
 
 import com.cc.service.FileService;
+import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -20,12 +21,15 @@ import java.util.Properties;
 public class MyTimeTaskImpl implements MyTimeTask{
     @Resource
     private FileService fileService;
+    private static Logger log =Logger.getLogger(MyTimeTaskImpl.class);
 
 
 //    @Scheduled(cron="0/9 * * * * ?")
 //    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
 
-    @Scheduled(cron="0 0/5 * * * ? ")
+//    @Scheduled(cron="0 0/5 * * * ? ")
+//每小时5分开始
+    @Scheduled(cron="0 10 * * * ? ")
     @Override
     public void upload_model20() {
         System.out.println("start time task");
@@ -55,7 +59,9 @@ public class MyTimeTaskImpl implements MyTimeTask{
     }
 
 //    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
-    @Scheduled(cron="0 0/5 * * * ? ")
+//    @Scheduled(cron="0 0/5 * * * ? ")
+//每小时5分开始
+    @Scheduled(cron="0 10 * * * ? ")
     @Override
     public void upload_model90() {
         System.out.println("start time task");
@@ -85,7 +91,9 @@ public class MyTimeTaskImpl implements MyTimeTask{
 
 
 //    @Scheduled(cron="0 2 0 1 * ? ") //每月一号凌晨2点执行
-    @Scheduled(cron="0 0/3 * * * ? ")
+//    @Scheduled(cron="0 0/3 * * * ? ")
+    //每小时0分开始
+    @Scheduled(cron="0 0 * * * ? ")
     @Override
     public void updateDataTrain() {
         fileService.updateDataTrain20();
@@ -94,8 +102,9 @@ public class MyTimeTaskImpl implements MyTimeTask{
 
 
 //    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
-    @Scheduled(cron="0 0/4 * * * ? ")
-
+//    @Scheduled(cron="0 0/4 * * * ? ")
+//每小时5分开始
+    @Scheduled(cron="0 6 * * * ? ")
     @Override
     public void train20() {
 
@@ -125,7 +134,9 @@ public class MyTimeTaskImpl implements MyTimeTask{
     }
 
 //    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
-    @Scheduled(cron="0 0/4 * * * ? ")
+//    @Scheduled(cron="0 0/4 * * * ? ")
+//每小时5分开始
+    @Scheduled(cron="0 6 * * * ? ")
     @Override
     public void train90() {
 
