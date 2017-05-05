@@ -14,12 +14,19 @@ import org.apache.http.util.EntityUtils;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -32,21 +39,21 @@ public class ShipController {
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/ship90", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody()
-    public void test(@RequestBody PostData postData, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public void test1( @RequestBody PostData postData ,HttpServletRequest request, HttpServletResponse response) throws Exception {
         response.setContentType("application/json;charset=utf-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        System.out.println("hehe sb spring");
+        PrintWriter pw = response.getWriter();
         Gson gson = new Gson();
         String json = gson.toJson(postData);
-
         System.out.println(json);
         String url =null;
-
         Properties prop = new Properties();
         try {
-            prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
+            prop.load(ShipController.class.getClassLoader().getResourceAsStream("file.properties"));
             url=prop.getProperty("url90");
         } catch(IOException e) {
             e.printStackTrace();
@@ -60,7 +67,6 @@ public class ShipController {
         entity.setContentEncoding("UTF-8");
         entity.setContentType("application/json");
         httpPost.setEntity(entity);
-        PrintWriter pw = response.getWriter();
         HttpResponse resp = client.execute(httpPost);
         if (resp.getStatusLine().getStatusCode() == 200) {
             HttpEntity he = resp.getEntity();
@@ -86,7 +92,7 @@ public class ShipController {
         String url =null;
         Properties prop = new Properties();
         try {
-            prop.load(MyTimeTaskImpl.class.getClassLoader().getResourceAsStream("file.properties"));
+            prop.load(ShipController.class.getClassLoader().getResourceAsStream("file.properties"));
             url=prop.getProperty("url20");
         } catch(IOException e) {
             e.printStackTrace();
@@ -109,4 +115,7 @@ public class ShipController {
         pw.print(respContent);
         pw.close();
     }
+
+
+
 }
