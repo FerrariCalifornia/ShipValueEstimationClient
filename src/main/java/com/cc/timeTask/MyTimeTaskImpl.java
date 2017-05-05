@@ -24,12 +24,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
     private static Logger log =Logger.getLogger(MyTimeTaskImpl.class);
 
 
-//    @Scheduled(cron="0/9 * * * * ?")
-//    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
-
-//    @Scheduled(cron="0 0/5 * * * ? ")
-//每小时5分开始
-    @Scheduled(cron="0 10 * * * ? ")
+    //每隔三个月执行一次 凌晨零点15分
+    @Scheduled(cron="0 15 0 1 1/3 ? ")
     @Override
     public void upload_model20() {
         System.out.println("start time task");
@@ -58,10 +54,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
 
     }
 
-//    @Scheduled(cron="0 4 0 1 * ? ") //每月一号凌晨4点执行
-//    @Scheduled(cron="0 0/5 * * * ? ")
-//每小时5分开始
-    @Scheduled(cron="0 10 * * * ? ")
+    //每隔三个月执行一次 凌晨零点15分
+    @Scheduled(cron="0 15 0 1 1/3 ? ")
     @Override
     public void upload_model90() {
         System.out.println("start time task");
@@ -90,10 +84,9 @@ public class MyTimeTaskImpl implements MyTimeTask{
     }
 
 
-//    @Scheduled(cron="0 2 0 1 * ? ") //每月一号凌晨2点执行
-//    @Scheduled(cron="0 0/3 * * * ? ")
-    //每小时0分开始
-    @Scheduled(cron="0 0 * * * ? ")
+
+    //每隔三个月执行一次
+    @Scheduled(cron="0 0 0 1 1/3 ?  ")
     @Override
     public void updateDataTrain() {
         fileService.updateDataTrain20();
@@ -101,10 +94,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
     }
 
 
-//    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
-//    @Scheduled(cron="0 0/4 * * * ? ")
-//每小时5分开始
-    @Scheduled(cron="0 6 * * * ? ")
+    //每隔三个月执行一次 凌晨零点10分
+    @Scheduled(cron="0 10 0 1 1/3 ? ")
     @Override
     public void train20() {
 
@@ -133,10 +124,8 @@ public class MyTimeTaskImpl implements MyTimeTask{
         }
     }
 
-//    @Scheduled(cron="0 3 0 1 * ? ") //每月一号凌晨3点执行
-//    @Scheduled(cron="0 0/4 * * * ? ")
-//每小时5分开始
-    @Scheduled(cron="0 6 * * * ? ")
+    //每隔三个月执行一次 凌晨零点10分
+    @Scheduled(cron="0 10 0 1 1/3 ? ")
     @Override
     public void train90() {
 
